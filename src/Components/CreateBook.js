@@ -8,8 +8,8 @@ export default function CreateBook({ book, createBook }) {
   };
 
   const handleClick = () => {
-    let id = Math.floor(Math.random() * 100);
-    createBook({ id: id, title: title });
+    //let id = Math.floor(Math.random() * 100);
+    createBook({ title: title });
   };
 
   return (

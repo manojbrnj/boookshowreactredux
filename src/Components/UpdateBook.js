@@ -12,6 +12,7 @@ export default function UpdateBook({ editBookById, book, handleEditClick }) {
     console.log(text);
     handleEditClick();
   };
+  console.log('update-book');
   return (
     <div className="update-book">
       <form onSubmit={handlesubmit}>
