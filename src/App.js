@@ -1,12 +1,22 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CreateBook from './Components/CreateBook';
 import MapList from './Components/MapList';
+import axios from 'axios';
 
 function App() {
   const [books, setBooks] = useState([]);
-  const createBook = (book) => {
-    setBooks([...books, book]);
+  const fetch = async () => {
+    const res = await axios.get('http://localhost:3001/books');
+    setBooks(res.data);
+  };
+  useEffect(() => {
+    console.log('hi');
+    fetch();
+  }, []);
+  const createBook = async (book) => {
+    const response = await axios.post('http://localhost:3001/books', book);
+    setBooks([...books, response.data]);
   };
   // delete book
 
@@ -22,7 +32,6 @@ function App() {
       }
       return item;
     });
-    console.log(updated);
     setBooks([...updated]);
   };
   return (
